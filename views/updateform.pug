@@ -1,0 +1,36 @@
+extends layout.pug 
+
+block header 
+    header.masthead(style=" height:250px")
+        .container
+            .row.d-flex.flex-column.align-content-center.justify-content-center
+                .col-lg-8.col-md-10.mx-auto
+                    .site-heading
+                        h2  Update a post with #{post._id} id
+block content 
+    form(action='/assignment/post/'+`${post._id}?_method=PUT` method='POST' )
+        .container 
+            .row.d-flex.flex-column.align-content-center
+                .col-6.mx-auto
+                    .form-group
+                        label(for='title') Post Title:
+                        br
+                        input(type='text' class="form-control" id='title' name='title' value=`${post.title}`) 
+                .col-6.mx-auto
+                    .form-group
+                        label(for='body') Post Body:
+                        br
+                        textarea.form-control(id="body" name='body'  rows="7") #{post.body}
+                .col-6.mx-auto
+                    .form-group      
+                        label(for='author') Author:
+                        br
+                        input(type='text' class="form-control"  id='author' name='author' value=`${post.author}`) 
+                .col-6.mx-auto
+                    .form-group      
+                        label(for='date') Date:
+                        br
+                        input(type='date' class="form-control"  id='date' name='date' value=`${post.date}`) 
+                .col-4.mx-auto
+                    .form-group
+                        button.btn.btn-primary.form-control.p-2(type='submit') Update Post

@@ -1,0 +1,35 @@
+extends layout.pug 
+
+block header 
+    header.masthead(style="height:250px")
+        .container
+            .row.d-flex.flex-column.align-content-center.justify-content-center
+                .col-lg-8.col-md-10.mxy-auto
+                    .site-heading
+                        h2 Reading A Single Post From Database
+block content 
+    .container
+        .row
+            .col-lg-8.col-md-10.mx-auto
+                    .post-preview
+                        a(href='/assignment/post/'+`${post._id}`)
+                            h2.post-title
+                                | #{post.title}
+                        p.post-meta
+                            | Posted by 
+                            a(href='#') #{post.author}
+                            |      on #{post.date}
+                        p.p-9
+                            | #{post.body}
+                        hr
+                        .container
+                            .row.d-flex.flex-row
+                                .col-lg-3.col-md-2.mx-auto
+                                    form(action='/assignment/post/update/'+`${post._id}` method='GET' )
+                                        .form-group
+                                            button.btn.btn-primary.form-control.p-2(type='submit') Update post
+                                .col-lg-3.col-md-2.mx-auto
+                                    form(action='/assignment/post/delete/'+`${post._id}?_method=DELETE` method='POST' )
+                                        .form-group
+                                            button.btn.btn-primary.form-control.p-2(type='submit') Delete post
+                        hr

@@ -11,9 +11,9 @@ const postSchema = new Schema({
     },
     author: {
         type: String
-    }, 
+    },
     date: {
-        type: String
+        type: Date
     }
 })
 

@@ -1,0 +1,30 @@
+extends layout.pug 
+
+block header 
+    header.masthead(style="height:250px")
+        .container
+            .row.d-flex.flex-column.align-content-center.justify-content-center
+                .col-lg-8.col-md-10.mx-auto
+                    .site-heading
+                        h2 Reading All Post From Database
+block content 
+    .container
+        .row
+            .col-lg-8.col-md-10.mx-auto
+                each post in posts 
+                    .post-preview
+                        a(href='/assignment/post/'+`${post._id}`)
+                            h2.post-title
+                                | #{post.title}
+                        p.post-meta
+                            | Posted by 
+                            a(href='#') #{post.author}
+                            |      on #{post.date}
+                        p.p-6
+                            | Problems look mighty small from 150 miles up 
+                            br
+                            |Head line or subtitle of the post must go here
+                            a(style='color:blue; text-decoration:none' href='/assignment/post/'+`${post._id}`)
+                                |  Click to read this...
+
+                hr
